@@ -4,11 +4,10 @@ curl -sL https://couchdb.apache.org/repo/bintray-pubkey.asc | apt-key add -
 
 # Run upgrades to get up-to-date.
 apt-get update -y -q
-apt-get upgrade -y -q
 
 # Set up debconf for configuring couchdb in an unattended fashion and install.
 COUCHDB_PASSWORD=password
-COUCHDB_BIND='0.0.0.0'
+COUCHDB_BIND=0.0.0.0
 
 echo "couchdb couchdb/mode select standalone
 couchdb couchdb/mode seen true
