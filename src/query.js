@@ -3,8 +3,10 @@
 const nodeDb = require('nano')('http://node_user:reallysecure@localhost:5984/node_db');
 
 function queryData(qry) {
+  const qryParams = qry;
+  qryParams.include_docs = true;
   return new Promise((resolve, reject) => {
-    nodeDb.fetch(qry, (err, body) => {
+    nodeDb.list(qryParams, (err, body) => {
       if (err) reject(new Error(`There was a problem querying the database.\nQuery: ${qry}\nError: ${err}`));
       resolve(body);
     });
